@@ -5,20 +5,20 @@
 Name:		%{spname}-musl-static
 Version:	0.7.5
 Release:	0%{?dist}
-Summary:	toybox compiled with musl-static
+Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
 License:	BSD
 URL:		http://landley.net/%{spname}
 Source0:	http://landley.net/%{spname}/downloads/%{spname}-%{version}.tar.gz
-Source1:	https://github.com/ryanwoodsmall/toybox-misc/blob/master/scripts/toybox_config_script.sh
+Source1:	https://github.com/ryanwoodsmall/%{spname}-misc/blob/master/scripts/%{spname}_config_script.sh
 
 BuildRequires:	musl-static >= 1.1.18-0
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
 
-Obsoletes:	toybox
+Obsoletes:	%{spname}
 
 Provides:	%{spname}
 Provides:	%{spname}-big
@@ -41,7 +41,7 @@ make %{?_smp_mflags} V=1 HOSTCC=musl-gcc CC=musl-gcc LDFLAGS=-static
 %install
 #make install DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{instdir}
-install -p -m 0755 toybox %{buildroot}%{instdir}/%{name}
+install -p -m 0755 %{spname} %{buildroot}%{instdir}/%{name}
 ln -sf %{name} %{buildroot}%{instdir}/%{spname}
 ln -sf %{name} %{buildroot}%{instdir}/%{spname}-big
 mkdir -p %{buildroot}%{profiled}
