@@ -4,7 +4,7 @@
 # versions tested
 #
 #   toybox : 0.7.5
-#   musl : 1.1.18 (rhel6/7, static)
+#   musl : 1.1.19 (rhel6/7, static)
 #
 
 #

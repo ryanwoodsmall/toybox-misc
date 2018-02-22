@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.7.5
-Release:	0%{?dist}
+Release:	1%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -13,7 +13,7 @@ URL:		http://landley.net/%{spname}
 Source0:	http://landley.net/%{spname}/downloads/%{spname}-%{version}.tar.gz
 Source1:	https://github.com/ryanwoodsmall/%{spname}-misc/blob/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.1.18-0
+BuildRequires:	musl-static >= 1.1.19-0
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -66,5 +66,8 @@ exit 0
 
 
 %changelog
+* Thu Feb 22 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.5-1
+- bump release for musl-libc 1.1.19
+
 * Wed Nov  1 2017 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.5-0
 - initial spec for static toybox compiled with musl
