@@ -89,13 +89,6 @@ make distclean
 test -e .config && rm -f .config
 make defconfig
 
-# rhel/centos 6 and 7 specific settings
-if [ "${rhel7}" -eq 1 ] ; then
-	echo "handle rhel7 here"
-elif [ "${rhel6}" -eq 1 ] ; then
-	echo "handle rhel6 here"
-fi
-
 # these are exposed in 'make menuconfig'
 toggle_on CONFIG_ARP
 toggle_on CONFIG_ARPING
@@ -161,6 +154,13 @@ toggle_on CONFIG_VI
 toggle_on CONFIG_WATCH
 #toggle_on CONFIG_WGET
 toggle_on CONFIG_XZCAT
+
+# rhel/centos 6 and 7 specific settings
+if [ "${rhel7}" -eq 1 ] ; then
+	echo "handle rhel7"
+elif [ "${rhel6}" -eq 1 ] ; then
+	echo "handle rhel6"
+fi
 
 # musl override options
 if [ "${musl}" -eq 1 ] ; then
