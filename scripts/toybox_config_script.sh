@@ -3,7 +3,7 @@
 #
 # versions tested
 #
-#   toybox : 0.7.5
+#   toybox : 0.7.6
 #   musl : 1.1.19 (rhel6/7, static)
 #
 
@@ -96,21 +96,6 @@ elif [ "${rhel6}" -eq 1 ] ; then
 	echo "handle rhel6 here"
 fi
 
-# musl override options
-if [ "${musl}" -eq 1 ] ; then
-	echo "handle musl here"
-fi
-
-# uclibc override options
-if [ "${uclibc}" -eq 1 ] ; then
-	echo "handle uclibc here"
-fi
-
-# common musl/uclibc-ng options (nsenter, etc.)
-if [ "${musl}" -eq 1 -o "${uclibc}" -eq 1 ] ; then
-	echo "handle common musl/uclibc here"
-fi
-
 # these are exposed in 'make menuconfig'
 toggle_on CONFIG_ARP
 toggle_on CONFIG_ARPING
@@ -176,6 +161,22 @@ toggle_on CONFIG_VI
 toggle_on CONFIG_WATCH
 #toggle_on CONFIG_WGET
 toggle_on CONFIG_XZCAT
+
+# musl override options
+if [ "${musl}" -eq 1 ] ; then
+	echo "handle musl"
+	toggle_off CONFIG_SYSLOGD
+fi
+
+# uclibc override options
+if [ "${uclibc}" -eq 1 ] ; then
+	echo "handle uclibc"
+fi
+
+# common musl/uclibc-ng options (nsenter, etc.)
+if [ "${musl}" -eq 1 -o "${uclibc}" -eq 1 ] ; then
+	echo "handle common musl/uclibc"
+fi
 
 # rewrite config
 make oldconfig
