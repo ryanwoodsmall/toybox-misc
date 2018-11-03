@@ -3,8 +3,8 @@
 #
 # versions tested
 #
-#   toybox : 0.7.7
-#   musl : 1.1.19 (rhel6/7, static)
+#   toybox : 0.7.8
+#   musl : 1.1.20 (rhel6/7, static)
 #
 
 #
@@ -90,10 +90,16 @@ test -e .config && rm -f .config
 make defconfig
 
 # these are exposed in 'make menuconfig'
+# generate a list:
+#   egrep '(^config|default n)' generated/Config.in | grep -B1 'default n' | awk '/^config /{print $NF}' > /tmp/cw/tbc.txt
+# see missing items:
+#   for i in $(cat /tmp/cw/tbc.txt) ; do grep -q "toggle_on CONFIG_${i}" scripts/toybox_config_script.sh && echo $i yes || echo $i no ; done | grep -v ' yes$'
 toggle_on CONFIG_ARP
 toggle_on CONFIG_ARPING
 toggle_on CONFIG_ASCII
+toggle_on CONFIG_BC
 toggle_on CONFIG_BOOTCHARTD
+#toggle_on CONFIG_BRCTL
 toggle_on CONFIG_CAT_V
 toggle_on CONFIG_COMPRESS
 toggle_on CONFIG_CROND
@@ -110,6 +116,8 @@ toggle_on CONFIG_GETFATTR
 toggle_on CONFIG_GETTY
 toggle_on CONFIG_GROUPADD
 toggle_on CONFIG_GROUPDEL
+toggle_on CONFIG_GUNZIP
+toggle_on CONFIG_GZIP
 toggle_on CONFIG_HELLO
 toggle_on CONFIG_HOST
 toggle_on CONFIG_HOSTID
@@ -154,6 +162,7 @@ toggle_on CONFIG_VI
 toggle_on CONFIG_WATCH
 #toggle_on CONFIG_WGET
 toggle_on CONFIG_XZCAT
+toggle_on CONFIG_ZCAT
 
 # rhel/centos 6 and 7 specific settings
 if [ "${rhel7}" -eq 1 ] ; then
