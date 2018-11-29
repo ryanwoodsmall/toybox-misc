@@ -4,14 +4,14 @@
 
 Name:		%{spname}-musl-static
 Version:	0.7.8
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
 License:	BSD
 URL:		http://landley.net/%{spname}
 Source0:	http://landley.net/%{spname}/downloads/%{spname}-%{version}.tar.gz
-Source1:	https://github.com/ryanwoodsmall/%{spname}-misc/blob/master/scripts/%{spname}_config_script.sh
+Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
 BuildRequires:	musl-static >= 1.1.20-0
 BuildRequires:	gcc
@@ -66,6 +66,9 @@ exit 0
 
 
 %changelog
+* Wed Nov 29 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-3
+- use github raw url for config script
+
 * Fri Nov  2 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-2
 - toybox 0.7.8
 
