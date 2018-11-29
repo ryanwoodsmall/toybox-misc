@@ -66,7 +66,7 @@ exit 0
 
 
 %changelog
-* Wed Nov 29 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-3
+* Wed Nov 28 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-3
 - use github raw url for config script
 
 * Fri Nov  2 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-2
