@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.7.8
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -13,7 +13,7 @@ URL:		http://landley.net/%{spname}
 Source0:	http://landley.net/%{spname}/downloads/%{spname}-%{version}.tar.gz
 Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.1.20-0
+BuildRequires:	musl-static >= 1.1.21-0
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -66,6 +66,9 @@ exit 0
 
 
 %changelog
+* Tue Jan 22 2019 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-4
+- release bump for musl 1.1.21
+
 * Wed Nov 28 2018 ryan woodsmall <rwoodsmall@gmail.com> - 0.7.8-3
 - use github raw url for config script
 
