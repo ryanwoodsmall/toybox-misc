@@ -118,7 +118,7 @@ toggle_on CONFIG_GROUPADD
 toggle_on CONFIG_GROUPDEL
 toggle_on CONFIG_GUNZIP
 toggle_on CONFIG_GZIP
-toggle_on CONFIG_HELLO
+#toggle_on CONFIG_HELLO
 toggle_on CONFIG_HOST
 toggle_on CONFIG_HOSTID
 toggle_on CONFIG_ICONV
