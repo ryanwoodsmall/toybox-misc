@@ -130,6 +130,7 @@ toggle_on CONFIG_KLOGD_SOURCE_RING_BUFFER
 toggle_on CONFIG_LAST
 toggle_on CONFIG_LOGGER
 toggle_on CONFIG_LSOF
+toggle_on CONFIG_MAN
 toggle_on CONFIG_MDEV
 toggle_on CONFIG_MDEV_CONF
 toggle_on CONFIG_MKE2FS
