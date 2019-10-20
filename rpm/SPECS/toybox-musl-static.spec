@@ -3,7 +3,7 @@
 %define	profiled	%{_sysconfdir}/profile.d
 
 Name:		%{spname}-musl-static
-Version:	0.8.1
+Version:	0.8.2
 Release:	7%{?dist}
 Summary:	%{spname} compiled with musl-static
 
@@ -32,6 +32,7 @@ Toybox combines common Linux command line utilities together into a single BSD-l
 
 %prep
 %setup -q -n %{spname}-%{version}
+sed -i.ORIG 's/__has_include.*/0/g' lib/portability.h
 
 
 %build
@@ -67,6 +68,9 @@ exit 0
 
 
 %changelog
+* Sat Oct 19 2019 ryan woodsmall <rwoodsmall@gmail.com> - 0.8.2-7
+- toybox 0.8.2
+
 * Wed Jul 17 2019 ryan woodsmall <rwoodsmall@gmail.com> - 0.8.1-7
 - release bump for musl 1.1.23
 
