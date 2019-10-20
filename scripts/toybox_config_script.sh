@@ -3,8 +3,8 @@
 #
 # versions tested
 #
-#   toybox : 0.7.8
-#   musl : 1.1.20 (rhel6/7, static)
+#   toybox : 0.8.2
+#   musl : 1.1.23 (rhel6/7, static)
 #
 
 #
@@ -170,6 +170,7 @@ if [ "${rhel7}" -eq 1 ] ; then
 	echo "handle rhel7"
 elif [ "${rhel6}" -eq 1 ] ; then
 	echo "handle rhel6"
+	toggle_off CONFIG_LOSETUP
 fi
 
 # musl override options
