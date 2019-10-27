@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.2
-Release:	7%{?dist}
+Release:	8%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -14,7 +14,7 @@ URL:		http://landley.net/%{spname}
 Source0:	https://github.com/landley/%{spname}/archive/%{version}.tar.gz
 Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.1.23-0
+BuildRequires:	musl-static >= 1.1.24-0
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -68,6 +68,9 @@ exit 0
 
 
 %changelog
+* Sat Oct 26 2019 ryan woodsmall <rwoodsmall@gmail.com>
+- release bump for musl 1.1.24
+
 * Sat Oct 19 2019 ryan woodsmall <rwoodsmall@gmail.com> - 0.8.2-7
 - toybox 0.8.2
 
