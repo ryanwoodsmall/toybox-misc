@@ -98,6 +98,7 @@ toggle_on CONFIG_ARP
 toggle_on CONFIG_ARPING
 toggle_on CONFIG_ASCII
 toggle_on CONFIG_BC
+toggle_on CONFIG_BLKDISCARD
 toggle_on CONFIG_BOOTCHARTD
 #toggle_on CONFIG_BRCTL
 toggle_on CONFIG_CAT_V
@@ -108,11 +109,15 @@ toggle_on CONFIG_DD
 toggle_on CONFIG_DEALLOCVT
 toggle_on CONFIG_DECOMPRESS
 toggle_on CONFIG_DIFF
+toggle_on CONFIG_EVAL
+toggle_on CONFIG_EXEC
+toggle_on CONFIG_EXPORT
 toggle_on CONFIG_EXPR
 toggle_on CONFIG_FDISK
 toggle_on CONFIG_FOLD
 toggle_on CONFIG_FSCK
 toggle_on CONFIG_GETFATTR
+toggle_on CONFIG_GETOPT
 toggle_on CONFIG_GETTY
 toggle_on CONFIG_GROUPADD
 toggle_on CONFIG_GROUPDEL
@@ -142,9 +147,12 @@ toggle_on CONFIG_MODPROBE
 toggle_on CONFIG_MORE
 toggle_on CONFIG_OPENVT
 toggle_on CONFIG_PING
+toggle_on CONFIG_READELF
 toggle_on CONFIG_ROUTE
+toggle_on CONFIG_RTCWAKE
 toggle_on CONFIG_SETFATTR
 toggle_on CONFIG_SH
+toggle_on CONFIG_SHIFT
 toggle_on CONFIG_SULOGIN
 toggle_on CONFIG_SYSLOGD
 toggle_on CONFIG_TAR
@@ -157,6 +165,7 @@ toggle_on CONFIG_TFTPD
 toggle_on CONFIG_TOYBOX_NORECURSE
 toggle_on CONFIG_TR
 toggle_on CONFIG_TRACEROUTE
+toggle_on CONFIG_UNSET
 toggle_on CONFIG_USERADD
 toggle_on CONFIG_USERDEL
 toggle_on CONFIG_VI
