@@ -181,6 +181,7 @@ elif [ "${rhel6}" -eq 1 ] ; then
 	echo "handle rhel6"
 	toggle_off CONFIG_BLKDISCARD
 	toggle_off CONFIG_LOSETUP
+	toggle_off CONFIG_LSATTR
 fi
 
 # musl override options
