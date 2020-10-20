@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.3
-Release:	8%{?dist}
+Release:	9%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -68,6 +68,9 @@ exit 0
 
 
 %changelog
+* Tue Oct 20 2020 ryan woodsmall <rwoodsmall@gmail.com>
+- release bump for config script change
+
 * Tue May 12 2020 ryan woodsmall <rwoodsmall@gmail.com>
 - toybox 0.8.3
 
