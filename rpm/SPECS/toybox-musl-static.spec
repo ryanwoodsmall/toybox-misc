@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.3
-Release:	9%{?dist}
+Release:	10%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells

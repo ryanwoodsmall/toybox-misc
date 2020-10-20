@@ -176,16 +176,18 @@ toggle_on CONFIG_ZCAT
 
 # XXX - disable chattr/lsattr for now
 # XXX - undefined on centos 6, centos 7: FS_ENCRYPT_FL FS_INLINE_DATA_FL FS_PROJINHERIT_FL
-toggle_off CONFIG_CHATTR
-toggle_off CONFIG_LSATTR
 
 # rhel/centos 6 and 7 specific settings
 if [ "${rhel7}" -eq 1 ] ; then
 	echo "handle rhel7"
+	toggle_off CONFIG_CHATTR
+	toggle_off CONFIG_LSATTR
 elif [ "${rhel6}" -eq 1 ] ; then
 	echo "handle rhel6"
 	toggle_off CONFIG_BLKDISCARD
+	toggle_off CONFIG_CHATTR
 	toggle_off CONFIG_LOSETUP
+	toggle_off CONFIG_LSATTR
 fi
 
 # musl override options
