@@ -152,6 +152,7 @@ toggle_on CONFIG_ROUTE
 toggle_on CONFIG_RTCWAKE
 toggle_on CONFIG_SETFATTR
 toggle_on CONFIG_SH
+toggle_on CONFIG_SHA3SUM
 toggle_on CONFIG_SHIFT
 toggle_on CONFIG_SULOGIN
 toggle_on CONFIG_SYSLOGD
@@ -170,6 +171,7 @@ toggle_on CONFIG_USERADD
 toggle_on CONFIG_USERDEL
 toggle_on CONFIG_VI
 toggle_on CONFIG_WATCH
+toggle_on CONFIG_WATCHDOG
 #toggle_on CONFIG_WGET
 toggle_on CONFIG_XZCAT
 toggle_on CONFIG_ZCAT

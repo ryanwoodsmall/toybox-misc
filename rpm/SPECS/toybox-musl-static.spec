@@ -3,7 +3,7 @@
 %define	profiled	%{_sysconfdir}/profile.d
 
 Name:		%{spname}-musl-static
-Version:	0.8.3
+Version:	0.8.4
 Release:	11%{?dist}
 Summary:	%{spname} compiled with musl-static
 
@@ -68,6 +68,9 @@ exit 0
 
 
 %changelog
+* Sun Oct 25 2020 ryan woodsmall <rwoodsmall@gmail.com>
+- toybox 0.8.4
+
 * Tue Oct 20 2020 ryan woodsmall <rwoodsmall@gmail.com>
 - release bump for config script change
 - release bump for musl 1.2.1
