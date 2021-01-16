@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.4
-Release:	12%{?dist}
+Release:	13%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -14,7 +14,7 @@ URL:		http://landley.net/%{spname}
 Source0:	https://github.com/landley/%{spname}/archive/%{version}.tar.gz
 Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.2.1-1
+BuildRequires:	musl-static >= 1.2.2-1
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -68,6 +68,9 @@ exit 0
 
 
 %changelog
+* Fri Jan 15 2021 ryan woodsmall <rwoodsmall@gmail.com>
+- release bump for musl 1.2.2
+
 * Wed Dec 30 2020 ryan woodsmall <rwoodsmall@gmail.com>
 - release bump for musl CVE-2020-28928
 
