@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.6
-Release:	13%{?dist}
+Release:	14%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -14,7 +14,7 @@ URL:		http://landley.net/%{spname}
 Source0:	https://github.com/landley/%{spname}/archive/%{version}.tar.gz
 Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.2.2-1
+BuildRequires:	musl-static >= 1.2.3-1
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -68,6 +68,9 @@ exit 0
 
 
 %changelog
+* Fri Apr 29 2022 ryan woodsmall <rwoodsmall@gmail.com>
+- release bump for musl 1.2.3
+
 * Fri Dec 3 2021 ryan woodsmall
 - toybox 0.8.6
 
