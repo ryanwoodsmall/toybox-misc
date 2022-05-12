@@ -20,7 +20,8 @@
 #  tbd : determine todo
 #  this should not require "real" bash
 #  re-enable {group,user}{add,del}
-#  wget tls with bearssl libtls?
+#  wget tls with bearssl libtls? CONFIG_WGET_LIBTLS
+#  figure out CONFIG_TOYBOX_LIBCRYPTO for openssl
 #
 
 # who are we
