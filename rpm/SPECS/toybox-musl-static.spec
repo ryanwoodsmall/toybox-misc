@@ -3,7 +3,7 @@
 %define	profiled	%{_sysconfdir}/profile.d
 
 Name:		%{spname}-musl-static
-Version:	0.8.6
+Version:	0.8.7
 Release:	14%{?dist}
 Summary:	%{spname} compiled with musl-static
 
@@ -68,6 +68,11 @@ exit 0
 
 
 %changelog
+* Thu May 12 2022 ryan woodsmall
+- toybox 0.8.7
+- disable groupadd/groupdel/useradd/userdel until update_password signature change is resolved
+- disable gpio bits on rhel6
+
 * Fri Apr 29 2022 ryan woodsmall <rwoodsmall@gmail.com>
 - release bump for musl 1.2.3
 

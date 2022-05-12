@@ -3,8 +3,8 @@
 #
 # versions tested
 #
-#   toybox : 0.8.2
-#   musl : 1.1.23 (rhel6/7, static)
+#   toybox : 0.8.6
+#   musl : 1.2.x (rhel6/7, static)
 #
 
 #
@@ -19,6 +19,8 @@
 # TODO
 #  tbd : determine todo
 #  this should not require "real" bash
+#  re-enable {group,user}{add,del}
+#  wget tls with bearssl libtls?
 #
 
 # who are we
@@ -101,7 +103,7 @@ toggle_on CONFIG_BC
 toggle_on CONFIG_BLKDISCARD
 toggle_on CONFIG_BOOTCHARTD
 #toggle_on CONFIG_BRCTL
-toggle_on CONFIG_CAT_V
+#toggle_on CONFIG_CAT_V
 toggle_on CONFIG_COMPRESS
 toggle_on CONFIG_CROND
 toggle_on CONFIG_CRONTAB
@@ -119,8 +121,8 @@ toggle_on CONFIG_FSCK
 toggle_on CONFIG_GETFATTR
 toggle_on CONFIG_GETOPT
 toggle_on CONFIG_GETTY
-toggle_on CONFIG_GROUPADD
-toggle_on CONFIG_GROUPDEL
+#toggle_on CONFIG_GROUPADD
+#toggle_on CONFIG_GROUPDEL
 toggle_on CONFIG_GUNZIP
 toggle_on CONFIG_GZIP
 #toggle_on CONFIG_HELLO
@@ -167,14 +169,20 @@ toggle_on CONFIG_TOYBOX_NORECURSE
 toggle_on CONFIG_TR
 toggle_on CONFIG_TRACEROUTE
 toggle_on CONFIG_UNSET
-toggle_on CONFIG_USERADD
-toggle_on CONFIG_USERDEL
+#toggle_on CONFIG_USERADD
+#toggle_on CONFIG_USERDEL
 toggle_on CONFIG_VI
 toggle_on CONFIG_WATCH
 toggle_on CONFIG_WATCHDOG
 #toggle_on CONFIG_WGET
 toggle_on CONFIG_XZCAT
 toggle_on CONFIG_ZCAT
+
+# XXX - 20220512
+toggle_off CONFIG_GROUPADD
+toggle_off CONFIG_GROUPDEL
+toggle_off CONFIG_USERADD
+toggle_off CONFIG_USERDEL
 
 # XXX - disable chattr/lsattr for now
 # XXX - undefined on centos 6, centos 7: FS_ENCRYPT_FL FS_INLINE_DATA_FL FS_PROJINHERIT_FL
@@ -190,6 +198,11 @@ elif [ "${rhel6}" -eq 1 ] ; then
 	toggle_off CONFIG_CHATTR
 	toggle_off CONFIG_LOSETUP
 	toggle_off CONFIG_LSATTR
+	toggle_off CONFIG_GPIODETECT
+	toggle_off CONFIG_GPIOFIND
+	toggle_off CONFIG_GPIOGET
+	toggle_off CONFIG_GPIOINFO
+	toggle_off CONFIG_GPIOSET
 fi
 
 # musl override options
