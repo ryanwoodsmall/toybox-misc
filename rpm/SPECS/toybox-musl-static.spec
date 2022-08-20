@@ -1,4 +1,5 @@
 %global	debug_package	%{nil}
+%define	__strip		/usr/bin/true
 
 %define	spname		toybox
 %define	instdir		/opt/%{spname}
@@ -6,7 +7,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.8
-Release:	16%{?dist}
+Release:	17%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -26,7 +27,7 @@ BuildRequires:	devtoolset-8
 %endif
 
 %if 0%{?rhel} == 7
-BuildRequires:	devtoolset-10
+BuildRequires:	devtoolset-11
 %endif
 
 Obsoletes:	%{spname}
@@ -52,22 +53,24 @@ bash %{SOURCE1} -$(rpm --eval '%{rhel}') -m
 . /opt/rh/devtoolset-8/enable
 %endif
 %if 0%{?rhel} == 7
-. /opt/rh/devtoolset-10/enable
+. /opt/rh/devtoolset-11/enable
 %endif
 make %{?_smp_mflags} V=1 HOSTCC=musl-gcc CC=musl-gcc LDFLAGS=-static
 
 
 %check
 ./%{spname} --version
+sha256sum %{spname}
 
 
 %install
 . /etc/profile
+export DONT_STRIP=1
 %if 0%{?rhel} == 6
 . /opt/rh/devtoolset-8/enable
 %endif
 %if 0%{?rhel} == 7
-. /opt/rh/devtoolset-10/enable
+. /opt/rh/devtoolset-11/enable
 %endif
 #make install DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{instdir}
@@ -100,8 +103,10 @@ exit 0
 - disable gpio on rhel6/rhel7
 - add stub rhel8/rhel9 bits to config script
 - toybox 0.8.8
-- use devtoolset-10 for rhel7 (devtoolset-11 produced a binary that segfaulted)
+- use devtoolset-9 for rhel7 (devtoolset-10/-11 produced a binary that segfaulted???)
 - use devtoolset-8 for rhel6
+- turn off strip
+- go back to devtoolset-11 for rhel7 (???)
 
 * Thu May 12 2022 ryan woodsmall
 - toybox 0.8.7
