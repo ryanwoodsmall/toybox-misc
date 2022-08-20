@@ -1,3 +1,5 @@
+%global	debug_package	%{nil}
+
 %define	spname		toybox
 %define	instdir		/opt/%{spname}
 %define	profiled	%{_sysconfdir}/profile.d
