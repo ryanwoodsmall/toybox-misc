@@ -92,7 +92,7 @@ exit 0
 
 
 %changelog
-* Fri Aug 20 2022 ryan woodsmall
+* Fri Aug 19 2022 ryan woodsmall
 - disable gpio on rhel6/rhel7
 - add stub rhel8/rhel9 bits to config script
 - toybox 0.8.8
