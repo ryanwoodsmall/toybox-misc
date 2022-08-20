@@ -3,7 +3,7 @@
 %define	profiled	%{_sysconfdir}/profile.d
 
 Name:		%{spname}-musl-static
-Version:	0.8.7
+Version:	0.8.8
 Release:	15%{?dist}
 Summary:	%{spname} compiled with musl-static
 
@@ -19,6 +19,14 @@ BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
 
+%if 0%{?rhel} == 6
+BuildRequires:	devtoolset-8
+%endif
+
+%if 0%{?rhel} == 7
+BuildRequires:	devtoolset-11
+%endif
+
 Obsoletes:	%{spname}
 
 Provides:	%{spname}
@@ -32,15 +40,29 @@ Toybox combines common Linux command line utilities together into a single BSD-l
 
 %prep
 %setup -q -n %{spname}-%{version}
-sed -i.ORIG 's/__has_include.*/0/g' lib/portability.h
+sed -i.ORIG '/crypt.*ssl/s,for i in .*,for i in nononononono,g' scripts/make.sh
 
 
 %build
 bash %{SOURCE1} -$(rpm --eval '%{rhel}') -m
+. /etc/profile
+%if 0%{?rhel} == 6
+. /opt/rh/devtoolset-8/enable
+%endif
+%if 0%{?rhel} == 7
+. /opt/rh/devtoolset-11/enable
+%endif
 make %{?_smp_mflags} V=1 HOSTCC=musl-gcc CC=musl-gcc LDFLAGS=-static
 
 
 %install
+. /etc/profile
+%if 0%{?rhel} == 6
+. /opt/rh/devtoolset-8/enable
+%endif
+%if 0%{?rhel} == 7
+. /opt/rh/devtoolset-11/enable
+%endif
 #make install DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{instdir}
 install -p -m 0755 %{spname} %{buildroot}%{instdir}/%{name}
@@ -71,6 +93,9 @@ exit 0
 * Fri Aug 20 2022 ryan woodsmall
 - disable gpio on rhel6/rhel7
 - add stub rhel8/rhel9 bits to config script
+- toybox 0.8.8
+- use devtoolset-11 for rhel7
+- use devtoolset-8 for rhel6
 
 * Thu May 12 2022 ryan woodsmall
 - toybox 0.8.7
