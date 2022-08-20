@@ -31,6 +31,8 @@ scriptname="$(basename "${BASH_SOURCE[0]}")"
 musl=0
 rhel6=0
 rhel7=0
+rhel8=0
+rhel9=0
 uclibc=0
 
 # simple delete/toggle_off/toggle_on  functions
@@ -53,8 +55,10 @@ function toggle_on() {
 function usage() {
 	cat <<-EOF
 	${scriptname} [-6] [-7] [-m] [-u]
-	  -6 : rhel/centos 6 specific options
-	  -7 : rhel/centos 7 specific options
+	  -6 : rhel 6 specific options
+	  -7 : rhel 7 specific options
+	  -8 : rhel 8 specific options
+	  -9 : rhel 9 specific options
 	  -m : musl specific options
 	  -u : uclibc/uclibc-ng specific options
 	EOF
@@ -62,13 +66,19 @@ function usage() {
 }
 
 # read options
-while getopts ":67impsu" opt ; do
+while getopts ":6789impsu" opt ; do
 	case ${opt} in
 		6)
 			rhel6=1
 			;;
 		7)
 			rhel7=1
+			;;
+		8)
+			rhel8=1
+			;;
+		9)
+			rhel9=1
 			;;
 		m)
 			musl=1
@@ -189,15 +199,21 @@ toggle_off CONFIG_USERDEL
 # XXX - undefined on centos 6, centos 7: FS_ENCRYPT_FL FS_INLINE_DATA_FL FS_PROJINHERIT_FL
 
 # rhel/centos 6 and 7 specific settings
+# XXX - no gpio.h in default c6/c7 kernel...
 if [ "${rhel7}" -eq 1 ] ; then
 	echo "handle rhel7"
 	toggle_off CONFIG_CHATTR
 	toggle_off CONFIG_LSATTR
+	toggle_off CONFIG_GPIODETECT
+	toggle_off CONFIG_GPIOFIND
+	toggle_off CONFIG_GPIOGET
+	toggle_off CONFIG_GPIOINFO
+	toggle_off CONFIG_GPIOSET
 elif [ "${rhel6}" -eq 1 ] ; then
 	echo "handle rhel6"
 	toggle_off CONFIG_BLKDISCARD
-	toggle_off CONFIG_CHATTR
 	toggle_off CONFIG_LOSETUP
+	toggle_off CONFIG_CHATTR
 	toggle_off CONFIG_LSATTR
 	toggle_off CONFIG_GPIODETECT
 	toggle_off CONFIG_GPIOFIND

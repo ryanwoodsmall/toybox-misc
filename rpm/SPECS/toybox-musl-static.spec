@@ -4,7 +4,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.7
-Release:	14%{?dist}
+Release:	15%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -68,6 +68,10 @@ exit 0
 
 
 %changelog
+* Fri Aug 20 2022 ryan woodsmall
+- disable gpio on rhel6/rhel7
+- add stub rhel8/rhel9 bits to config script
+
 * Thu May 12 2022 ryan woodsmall
 - toybox 0.8.7
 - disable groupadd/groupdel/useradd/userdel until update_password signature change is resolved
