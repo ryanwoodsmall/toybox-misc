@@ -7,7 +7,7 @@
 
 Name:		%{spname}-musl-static
 Version:	0.8.9
-Release:	17%{?dist}
+Release:	18%{?dist}
 Summary:	%{spname} compiled with musl-static
 
 Group:		System Environment/Shells
@@ -17,7 +17,7 @@ URL:		http://landley.net/%{spname}
 Source0:	https://github.com/landley/%{spname}/archive/%{version}.tar.gz
 Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.2.3-1
+BuildRequires:	musl-static >= 1.2.4-0
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -101,6 +101,9 @@ exit 0
 
 
 %changelog
+* Thu May 25 2023 ryanwoodsmall
+- musl 1.2.4
+
 * Sun Feb 12 2023 ryanwoodsmall
 - toybox 0.8.9
 - run make multiple times, because why not? sometimes it doesn't work. that's fine! it's fine.
