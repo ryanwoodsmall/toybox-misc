@@ -6,7 +6,7 @@
 %define	profiled	%{_sysconfdir}/profile.d
 
 Name:		%{spname}-musl-static
-Version:	0.8.9
+Version:	0.8.11
 Release:	18%{?dist}
 Summary:	%{spname} compiled with musl-static
 
@@ -17,7 +17,7 @@ URL:		http://landley.net/%{spname}
 Source0:	https://github.com/landley/%{spname}/archive/%{version}.tar.gz
 Source1:	https://raw.githubusercontent.com/ryanwoodsmall/%{spname}-misc/master/scripts/%{spname}_config_script.sh
 
-BuildRequires:	musl-static >= 1.2.4-0
+BuildRequires:	musl-static >= 1.2.5-0
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	kernel-headers
@@ -49,6 +49,11 @@ sed -i.ORIG '/crypt.*ssl/s,for i in .*,for i in nononononono,g' scripts/make.sh
 %build
 bash %{SOURCE1} -$(rpm --eval '%{rhel}') -m
 . /etc/profile
+%if 0%{?rhel} < 8
+cat toys/other/i2ctools.c > toys/other/i2ctools.c.ORIG
+echo '#define I2C_RDWR_IOCTL_MAX_MSGS I2C_RDRW_IOCTL_MAX_MSGS' > toys/other/i2ctools.c
+cat toys/other/i2ctools.c.ORIG >> toys/other/i2ctools.c
+%endif
 %if 0%{?rhel} == 6
 . /opt/rh/devtoolset-8/enable
 %endif
@@ -101,6 +106,15 @@ exit 0
 
 
 %changelog
+* Wed Apr 10 2024 ryanwoodsmall
+- toybox 0.8.11
+- musl 1.2.5
+- i don't know what i'm doing anymore
+- i loathe red hat
+- this may never get updated again
+- who cares
+- workaround (correct) I2C_RDWR_IOCTL_MAX_MSGS -> (incorrect) I2C_RDRW_IOCTL_MAX_MSGS old kernel def
+
 * Thu May 25 2023 ryanwoodsmall
 - musl 1.2.4
 
